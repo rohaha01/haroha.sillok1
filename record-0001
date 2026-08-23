@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>記錄 第0001號 | 差使日誌</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- 상단 메뉴 -->
+
+    <header>
+
+        <a href="index.html" class="logo">
+            差使日誌
+        </a>
+
+
+        <nav>
+
+            <a href="records.html">
+                기록
+            </a>
+
+            <a href="#">
+                자료실
+            </a>
+
+            <a href="about.html">
+                소개
+            </a>
+
+        </nav>
+
+    </header>
+
+
+
+    <main>
+
+
+        <!-- 기록 제목 -->
+
+        <section class="record-detail">
+
+
+            <div class="record-detail-mark">
+                HAROHA RECORD
+            </div>
+
+
+            <p class="record-detail-number">
+                記錄 第0001號
+            </p>
+
+
+            <h1>
+                저승차사 하로하, 등장
+            </h1>
+
+
+            <div class="record-detail-line"></div>
+
+
+            <p class="record-detail-date">
+                二千二十五年 九月 二十六日
+            </p>
+
+
+
+            <!-- 기록 본문 -->
+
+            <article class="record-document">
+
+
+                <div class="document-heading">
+
+                    <span>
+                        活動記錄
+                    </span>
+
+                    <span>
+                        2025.09.26
+                    </span>
+
+                </div>
+
+
+                <p>
+                    2025년 9월 26일.
+                </p>
+
+
+                <p>
+                    병오년 하로하가 블루점프 3기 저승차사 데뷔하였다. 사이나 링고의 「丸ノ内サディスティック」를 불렀다.
+후에 모습을 비춰 보이며 발부터 보여주며 "아까 제가 지나가다가 봤는데, 누가 저보고 할아버지 양말이라고"라 말하였다. 그러면 말을 덫붙이길 "여러분 가장 패셔니스타는 양말 색깔을 맞추는 거란걸 모르시나요? 이 포인트 이 시그니처 색깔을 담은 것"이라 하였다. 검을 뺄 수 있냐는 망령의 말에 칼을 빼들고 휘두르다가 말하길 "여러분 까불면 반갈죽이 됩니다"라 말했다.
+                </p>
+
+
+                <p>
+                    노래 태연의 사계를 부르고 스스로 말하길 "근데 저도 좀 느끼긴 한데, 노래 부를때 가만히 얼굴을 보고 있으면 확실히 예뻐 보이긴 하고요"라 평하며 그러지 않을 때와의 모습의 차이에 대해 의문을 드러냈다.
+
+                </p>
+
+
+                <p>
+                    PPT로 자신 소개를 하였다. "인간지네는 고어물에서 굉장히 매이저이며, 숭한 영화가 아니다"라고 말하였다. 
+"고어와 교도소, 아포칼립스를 좋아하는 이유가 현실에서 사지를 못 자르고, 맘에 안 드는 사람을 교도소에 못 가두는데, 그런것들을 싫어하는 상대라고 생각해서 보면 판타지같아 재밌고 쾌감이 있다"고 하였다.  그러자 망령들이 무서워하며 두려워하였다.
+제 3장 보는 취향에 고어와 함께 인간지네를 예시로 가지고 왔는데, 멀리하는 것에 다리가 많이 달린 것이 있는 의아한 부분이 있었다.
+
+                </p>
+
+                <p>
+                    별풍선 300개를 망령들이 계속 보내자 하로하의 방에 망령들이 여럿이 돌아다니는 기능을 보였다. 하로하 데뷔 기념 MD 기간 한정 판매 굿즈를 홍보하였다.
+
+                </p>
+
+            </article>
+
+
+
+            <!-- 기록 정보 -->
+
+            <section class="record-information">
+
+
+                <div>
+
+                    <span>
+                        記錄番號
+                    </span>
+
+                    <strong>
+                        0001
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        年月日
+                    </span>
+
+                    <strong>
+                        2025.09.26
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        分類
+                    </span>
+
+                    <strong>
+                        活動
+                    </strong>
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- 이동 -->
+
+            <div class="record-navigation">
+
+
+                <a href="records-2025-09.html">
+                    ← 2025년 9월 기록
+                </a>
+
+
+                <a href="records.html">
+                    기록 목록 →
+                </a>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- 하단 -->
+
+    <footer>
+
+        <div>
+            差使日誌
+        </div>
+
+        <p>
+            A personal archive for HAROHA
+        </p>
+
+        <small>
+            2026
+        </small>
+
+    </footer>
+
+
+</body>
+
+</html>
