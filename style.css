@@ -1,3 +1,9 @@
+/* =========================================================
+   差使日誌
+   HAROHA ARCHIVE
+   Archive / Chronicle Style
+========================================================= */
+
 * {
     box-sizing: border-box;
 }
@@ -11,13 +17,13 @@ body {
 
     background:
         radial-gradient(
-            circle at 50% 20%,
-            #292b35 0%,
-            #171820 45%,
-            #101116 100%
+            circle at 50% 15%,
+            #2b2b29 0%,
+            #1b1c1a 45%,
+            #111210 100%
         );
 
-    color: #e8e5dd;
+    color: #e5e0d5;
 
     font-family:
         "Noto Serif KR",
@@ -26,57 +32,59 @@ body {
 }
 
 
-/* =========================
+/* =========================================================
    Header
-========================= */
+========================================================= */
 
 header {
-
     height: 78px;
 
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
 
     padding: 0 7%;
 
     border-bottom: 1px solid rgba(220, 215, 200, 0.12);
 
-    background: rgba(12, 13, 18, 0.72);
+    background: rgba(15, 16, 14, 0.78);
 
     backdrop-filter: blur(8px);
 
     position: relative;
-
     z-index: 10;
 }
 
 
-.logo {
+/* 로고 */
 
+.logo {
     font-size: 20px;
 
     letter-spacing: 6px;
 
-    color: #eeeae0;
+    color: #eee9de;
 
     text-decoration: none;
+
+    transition: 0.2s;
+}
+
+.logo:hover {
+    color: #b4aa95;
 }
 
 
-nav {
+/* 메뉴 */
 
+nav {
     display: flex;
 
     gap: 30px;
 }
 
-
 nav a {
-
-    color: #aaa8a1;
+    color: #aaa79f;
 
     text-decoration: none;
 
@@ -85,27 +93,22 @@ nav a {
     transition: 0.2s;
 }
 
-
 nav a:hover {
-
-    color: #c87575;
+    color: #b4aa95;
 }
 
 
-/* =========================
+/* =========================================================
    Hero
-========================= */
+========================================================= */
 
 .hero {
-
     min-height: 720px;
 
     display: flex;
-
     flex-direction: column;
 
     align-items: center;
-
     justify-content: center;
 
     text-align: center;
@@ -116,40 +119,43 @@ nav a:hover {
 }
 
 
-.hero::before {
+/* 위에서 내려오는 세로선 */
 
+.hero::before {
     content: "";
 
     position: absolute;
 
     width: 1px;
-
     height: 120px;
 
-    background: linear-gradient(
-        transparent,
-        rgba(190, 80, 80, 0.5),
-        transparent
-    );
+    background:
+        linear-gradient(
+            transparent,
+            rgba(170, 158, 130, 0.55),
+            transparent
+        );
 
     top: 0;
 }
 
 
-.hero-mark {
+/* 작은 한자 */
 
+.hero-mark {
     font-size: 11px;
 
     letter-spacing: 9px;
 
-    color: #ad5555;
+    color: #a99d83;
 
     margin-bottom: 30px;
 }
 
 
-.hero h1 {
+/* 메인 제목 */
 
+.hero h1 {
     margin: 0;
 
     font-size: clamp(55px, 8vw, 88px);
@@ -158,55 +164,59 @@ nav a:hover {
 
     letter-spacing: 16px;
 
-    color: #f1eee6;
+    color: #f0ece2;
 }
 
 
-.line {
+/* 제목 아래 선 */
 
+.line {
     width: 80px;
 
     height: 1px;
 
-    background: #9c4848;
+    background: #8f836c;
 
     margin: 32px 0;
 }
 
 
-.hero-subtitle {
+/* 부제 */
 
+.hero-subtitle {
     margin: 0;
 
     font-size: 19px;
 
     letter-spacing: 2px;
 
-    color: #d8d4cc;
+    color: #d8d3c8;
 }
 
 
-.hero-description {
+/* 설명 */
 
+.hero-description {
     margin-top: 28px;
 
     line-height: 2;
 
     font-size: 14px;
 
-    color: #92919a;
+    color: #96958e;
 }
 
 
-.main-button {
+/* 메인 버튼 */
 
+.main-button {
     margin-top: 40px;
 
     padding: 14px 34px;
 
-    border: 1px solid #874646;
+    border: 1px solid #716856;
 
-    color: #cda6a6;
+    color: #c8bfae;
 
     text-decoration: none;
 
@@ -217,21 +227,18 @@ nav a:hover {
     transition: 0.25s;
 }
 
-
 .main-button:hover {
+    background: #716856;
 
-    background: #874646;
-
-    color: #fff;
+    color: #f8f5ed;
 }
 
 
-/* =========================
+/* =========================================================
    Profile
-========================= */
+========================================================= */
 
 .profile {
-
     max-width: 900px;
 
     margin: auto;
@@ -246,52 +253,57 @@ nav a:hover {
 }
 
 
-.profile-label {
+/* HAROHA */
 
+.profile-label {
     font-family: sans-serif;
 
     font-size: 10px;
 
     letter-spacing: 7px;
 
-    color: #a45454;
+    color: #a99d83;
 }
 
 
-.profile h2 {
+/* 이름 */
 
+.profile h2 {
     margin: 20px 0 10px;
 
     font-size: 42px;
 
     font-weight: 400;
+
+    color: #e8e3d8;
 }
 
 
-.profile-title {
+/* 직함 */
 
-    color: #c77777;
+.profile-title {
+    color: #b4aa95;
 
     font-size: 15px;
 }
 
 
-.profile-text {
+/* 설명 */
 
+.profile-text {
     margin-top: 28px;
 
-    color: #92919a;
+    color: #96958e;
 
     line-height: 2;
 }
 
 
-/* =========================
-   Recent
-========================= */
+/* =========================================================
+   Recent Records
+========================================================= */
 
 .recent {
-
     max-width: 950px;
 
     margin: auto;
@@ -300,36 +312,38 @@ nav a:hover {
 }
 
 
-.section-heading {
+/* 섹션 제목 */
 
+.section-heading {
     margin-bottom: 55px;
 }
 
 
 .section-heading span {
-
     font-family: sans-serif;
 
     font-size: 9px;
 
     letter-spacing: 5px;
 
-    color: #a45454;
+    color: #a99d83;
 }
 
 
 .section-heading h2 {
-
     margin-top: 16px;
 
     font-size: 32px;
 
     font-weight: 400;
+
+    color: #e4dfd5;
 }
 
 
-.record {
+/* 기록 */
 
+.record {
     display: flex;
 
     gap: 45px;
@@ -343,21 +357,20 @@ nav a:hover {
 
 
 .record:last-child {
-
     border-bottom: 1px solid rgba(220, 215, 200, 0.1);
 }
 
 
 .record:hover {
-
     background: rgba(255, 255, 255, 0.025);
 
     padding-left: 20px;
 }
 
 
-.record-date {
+/* 날짜 */
 
+.record-date {
     width: 80px;
 
     flex-shrink: 0;
@@ -368,91 +381,94 @@ nav a:hover {
 
     line-height: 1.7;
 
-    color: #666772;
+    color: #6f706b;
 }
 
 
 .record-date strong {
-
-    color: #aaaab0;
+    color: #aaa9a2;
 
     font-size: 14px;
 }
 
 
-.record-content {
+/* 기록 내용 */
 
+.record-content {
     flex: 1;
 }
 
 
-.record-category {
+/* 카테고리 */
 
+.record-category {
     font-family: sans-serif;
 
     font-size: 9px;
 
     letter-spacing: 2px;
 
-    color: #a45454;
+    color: #a99d83;
 }
 
 
-.record h3 {
+/* 제목 */
 
+.record h3 {
     margin: 10px 0;
 
     font-size: 18px;
 
     font-weight: 400;
+
+    color: #ddd8cd;
 }
 
 
-.record p {
+/* 설명 */
 
+.record p {
     margin: 0;
 
     font-size: 13px;
 
-    color: #777780;
+    color: #7f807b;
 }
 
 
-/* =========================
+/* =========================================================
    About
-========================= */
+========================================================= */
 
 .about {
-
     padding: 150px 30px;
 
     text-align: center;
 
-    background: rgba(0, 0, 0, 0.12);
+    background: rgba(0, 0, 0, 0.14);
 }
 
 
 .about-symbol {
-
-    color: #a45454;
+    color: #a99d83;
 
     margin-bottom: 30px;
 }
 
 
 .about h2 {
-
     font-size: 28px;
 
     font-weight: 400;
+
+    color: #e3ded3;
 }
 
 
 .about p {
-
     margin-top: 28px;
 
-    color: #85858d;
+    color: #898a84;
 
     font-size: 14px;
 
@@ -460,17 +476,16 @@ nav a:hover {
 }
 
 
-/* =========================
+/* =========================================================
    Footer
-========================= */
+========================================================= */
 
 footer {
-
     padding: 60px 30px;
 
     text-align: center;
 
-    color: #65656d;
+    color: #686963;
 
     font-family: sans-serif;
 
@@ -479,8 +494,7 @@ footer {
 
 
 footer div {
-
-    color: #aaa8a1;
+    color: #aaa79f;
 
     letter-spacing: 5px;
 
@@ -489,69 +503,15 @@ footer div {
 
 
 footer p {
-
     margin: 0 0 10px;
 }
 
 
-/* =========================
-   Mobile
-========================= */
-
-@media (max-width: 700px) {
-
-    header {
-
-        height: auto;
-
-        padding: 24px;
-
-        flex-direction: column;
-
-        gap: 20px;
-    }
-
-
-    nav {
-
-        gap: 16px;
-
-        flex-wrap: wrap;
-
-        justify-content: center;
-    }
-
-
-    .hero {
-
-        min-height: 620px;
-    }
-
-
-    .hero h1 {
-
-        letter-spacing: 9px;
-    }
-
-
-    .record {
-
-        gap: 20px;
-    }
-
-
-    .record-date {
-
-        width: 65px;
-    }
-
-}
-/* =========================
+/* =========================================================
    Record Index
-========================= */
+========================================================= */
 
 .record-index {
-
     width: 100%;
 
     max-width: 820px;
@@ -562,24 +522,21 @@ footer p {
 }
 
 
-/* Year */
+/* 연도 */
 
 .year {
-
     border-top: 1px solid rgba(220, 215, 200, 0.12);
 }
 
 
 .year:last-child {
-
     border-bottom: 1px solid rgba(220, 215, 200, 0.12);
 }
 
 
-/* Year title */
+/* 연도 제목 */
 
 .year summary {
-
     list-style: none;
 
     cursor: pointer;
@@ -599,13 +556,11 @@ footer p {
 
 
 .year summary::-webkit-details-marker {
-
     display: none;
 }
 
 
 .year summary:hover {
-
     background: rgba(255, 255, 255, 0.025);
 
     padding-left: 30px;
@@ -614,48 +569,47 @@ footer p {
 }
 
 
-.year-number {
+/* 연도 숫자 */
 
+.year-number {
     font-size: 27px;
 
     letter-spacing: 5px;
 
-    color: #e3dfd7;
+    color: #e1ddd3;
 }
 
 
-.year-arrow {
+/* + 버튼 */
 
+.year-arrow {
     font-family: sans-serif;
 
     font-size: 18px;
 
     font-weight: 300;
 
-    color: #a45454;
+    color: #a99d83;
 
     transition: transform 0.25s;
 }
 
 
 .year[open] .year-arrow {
-
     transform: rotate(45deg);
 }
 
 
-/* Month list */
+/* 월 목록 */
 
 .month-list {
-
     padding: 0 20px 25px 40px;
 }
 
 
-/* Month */
+/* 월 */
 
 .month {
-
     display: flex;
 
     align-items: center;
@@ -666,7 +620,7 @@ footer p {
 
     border-top: 1px solid rgba(220, 215, 200, 0.07);
 
-    color: #bdbab2;
+    color: #bdb9af;
 
     text-decoration: none;
 
@@ -675,68 +629,41 @@ footer p {
 
 
 .month:hover {
-
     background: rgba(255, 255, 255, 0.025);
 
-    color: #d17b7b;
+    color: #c8bfae;
 
     padding-left: 25px;
 }
 
 
-.month span {
+/* 월 이름 */
 
+.month span {
     font-size: 17px;
 
     letter-spacing: 3px;
 }
 
 
-.month small {
+/* 숫자 */
 
+.month small {
     font-family: sans-serif;
 
     font-size: 10px;
 
-    color: #666772;
+    color: #686963;
 
     letter-spacing: 1px;
 }
 
 
-/* Mobile */
-
-@media (max-width: 700px) {
-
-    .record-index {
-
-        padding-left: 20px;
-
-        padding-right: 20px;
-    }
-
-
-    .year-number {
-
-        font-size: 22px;
-
-        letter-spacing: 3px;
-    }
-
-
-    .month-list {
-
-        padding-left: 15px;
-    }
-
-}
-
-/* =========================
-   About / Archive Information
-========================= */
+/* =========================================================
+   Archive Information
+========================================================= */
 
 .archive-section {
-
     max-width: 760px;
 
     margin: 0 auto;
@@ -748,44 +675,597 @@ footer p {
 
 
 .archive-label {
-
     font-family: sans-serif;
 
     font-size: 9px;
 
     letter-spacing: 5px;
 
-    color: #a45454;
+    color: #a99d83;
 
     margin-bottom: 18px;
 }
 
 
 .archive-section h2 {
-
     margin: 0 0 35px;
 
     font-size: 30px;
 
     font-weight: 400;
 
-    color: #e8e5dd;
+    color: #e8e3d8;
 }
 
 
 .archive-section p {
-
     margin: 0 0 20px;
 
     font-size: 14px;
 
     line-height: 2.1;
 
-    color: #92919a;
+    color: #96958e;
 }
 
 
 .archive-section p:last-child {
-
     margin-bottom: 0;
+}
+
+
+/* =========================================================
+   Record Detail
+========================================================= */
+
+.record-detail {
+    max-width: 850px;
+
+    margin: auto;
+
+    padding: 140px 30px 120px;
+
+    text-align: center;
+}
+
+
+/* 記錄 */
+
+.record-detail-mark {
+    font-family: sans-serif;
+
+    font-size: 9px;
+
+    letter-spacing: 6px;
+
+    color: #a99d83;
+
+    margin-bottom: 25px;
+}
+
+
+/* 기록 번호 */
+
+.record-detail-number {
+    margin: 0;
+
+    font-family: sans-serif;
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+
+    color: #777872;
+}
+
+
+/* 제목 */
+
+.record-detail h1 {
+    margin: 25px 0 0;
+
+    font-size: 38px;
+
+    font-weight: 400;
+
+    letter-spacing: 2px;
+
+    color: #eeeae0;
+}
+
+
+/* 제목 아래 선 */
+
+.record-detail-line {
+    width: 70px;
+
+    height: 1px;
+
+    background: #8f836c;
+
+    margin: 35px auto;
+}
+
+
+/* 날짜 */
+
+.record-detail-date {
+    margin: 0;
+
+    font-size: 14px;
+
+    letter-spacing: 3px;
+
+    color: #aaa79f;
+}
+
+
+/* =========================================================
+   Document
+========================================================= */
+
+.record-document {
+    margin-top: 80px;
+
+    padding: 45px 55px;
+
+    border-top: 1px solid rgba(220, 215, 200, 0.12);
+
+    border-bottom: 1px solid rgba(220, 215, 200, 0.12);
+
+    text-align: left;
+
+    background: rgba(0, 0, 0, 0.1);
+}
+
+
+/* 문서 상단 */
+
+.document-heading {
+    display: flex;
+
+    justify-content: space-between;
+
+    padding-bottom: 20px;
+
+    margin-bottom: 35px;
+
+    border-bottom: 1px solid rgba(220, 215, 200, 0.08);
+
+    font-family: sans-serif;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    color: #a99d83;
+}
+
+
+/* 문서 내용 */
+
+.record-document p {
+    margin: 0 0 28px;
+
+    font-size: 15px;
+
+    line-height: 2.2;
+
+    color: #aaa79f;
+}
+
+
+/* =========================================================
+   Record Information
+========================================================= */
+
+.record-information {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 70px;
+
+    margin-top: 60px;
+
+    padding: 30px;
+
+    border-top: 1px solid rgba(220, 215, 200, 0.08);
+
+    border-bottom: 1px solid rgba(220, 215, 200, 0.08);
+}
+
+
+.record-information div {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+
+.record-information span {
+    font-family: sans-serif;
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+
+    color: #74756f;
+}
+
+
+.record-information strong {
+    font-size: 13px;
+
+    font-weight: 400;
+
+    color: #aaa79f;
+}
+
+
+/* =========================================================
+   Record Navigation
+========================================================= */
+
+.record-navigation {
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-top: 55px;
+}
+
+
+.record-navigation a {
+    color: #888982;
+
+    text-decoration: none;
+
+    font-size: 12px;
+
+    transition: 0.2s;
+}
+
+
+.record-navigation a:hover {
+    color: #b4aa95;
+}
+
+
+/* =========================================================
+   Mobile
+========================================================= */
+
+@media (max-width: 700px) {
+
+    header {
+        height: auto;
+
+        padding: 24px;
+
+        flex-direction: column;
+
+        gap: 20px;
+    }
+
+
+    nav {
+        gap: 16px;
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+    }
+
+
+    .hero {
+        min-height: 620px;
+    }
+
+
+    .hero h1 {
+        letter-spacing: 9px;
+    }
+
+
+    .record {
+        gap: 20px;
+    }
+
+
+    .record-date {
+        width: 65px;
+    }
+
+
+    .record-index {
+        padding-left: 20px;
+
+        padding-right: 20px;
+    }
+
+
+    .year-number {
+        font-size: 22px;
+
+        letter-spacing: 3px;
+    }
+
+
+    .month-list {
+        padding-left: 15px;
+    }
+
+
+    .record-detail {
+        padding: 100px 20px 80px;
+    }
+
+
+    .record-detail h1 {
+        font-size: 28px;
+
+        letter-spacing: 1px;
+    }
+
+
+    .record-document {
+        padding: 30px 25px;
+    }
+
+
+    .record-information {
+        gap: 25px;
+
+        flex-wrap: wrap;
+    }
+}
+
+a {
+    text-decoration: none;
+}
+
+a,
+a:visited,
+a:hover,
+a:active {
+    text-decoration: none;
+}
+
+/* =========================
+   Mobile Optimization
+========================= */
+
+@media (max-width: 700px) {
+
+    body {
+        overflow-x: hidden;
+    }
+
+    /* Header */
+
+    header {
+        height: auto;
+        min-height: 70px;
+        padding: 18px 20px;
+
+        flex-direction: row;
+        gap: 15px;
+    }
+
+    .logo {
+        font-size: 15px;
+        letter-spacing: 3px;
+        white-space: nowrap;
+    }
+
+    nav {
+        gap: 12px;
+    }
+
+    nav a {
+        font-size: 11px;
+        white-space: nowrap;
+    }
+
+
+    /* Hero */
+
+    .hero {
+        min-height: 580px;
+        padding: 80px 20px;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+        letter-spacing: 8px;
+    }
+
+    .hero-mark {
+        font-size: 9px;
+        letter-spacing: 6px;
+    }
+
+    .hero-subtitle {
+        font-size: 17px;
+    }
+
+    .hero-description {
+        font-size: 13px;
+        line-height: 2;
+    }
+
+
+    /* Recent Records */
+
+    .recent {
+        padding: 90px 20px;
+    }
+
+    .section-heading h2 {
+        font-size: 27px;
+    }
+
+    .record {
+        gap: 15px;
+        padding: 25px 5px;
+    }
+
+    .record-date {
+        width: 60px;
+        font-size: 10px;
+    }
+
+    .record-date strong {
+        font-size: 12px;
+    }
+
+    .record h3 {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+
+    .record p {
+        font-size: 12px;
+        line-height: 1.7;
+    }
+
+
+    /* Record Index */
+
+    .record-index {
+        width: 100%;
+        padding: 30px 20px 90px;
+    }
+
+    .year summary {
+        padding: 28px 10px;
+    }
+
+    .year-number {
+        font-size: 20px;
+        letter-spacing: 2px;
+    }
+
+    .year-arrow {
+        font-size: 16px;
+    }
+
+    .month-list {
+        padding: 0 5px 15px 15px;
+    }
+
+    .month {
+        padding: 17px 10px;
+    }
+
+    .month span {
+        font-size: 15px;
+        letter-spacing: 2px;
+    }
+
+
+    /* Record Detail */
+
+    .record-detail {
+        width: 100%;
+        padding: 80px 18px 70px;
+    }
+
+    .record-detail-mark {
+        font-size: 8px;
+        letter-spacing: 4px;
+    }
+
+    .record-detail-number {
+        font-size: 10px;
+    }
+
+    .record-detail h1 {
+        font-size: 27px;
+        line-height: 1.6;
+        letter-spacing: 0;
+        word-break: keep-all;
+    }
+
+    .record-detail-date {
+        font-size: 12px;
+        letter-spacing: 1px;
+    }
+
+
+    /* Document */
+
+    .record-document {
+        margin-top: 55px;
+        padding: 28px 20px;
+    }
+
+    .document-heading {
+        font-size: 8px;
+        letter-spacing: 1px;
+        gap: 10px;
+    }
+
+    .record-document p {
+        font-size: 14px;
+        line-height: 2;
+        word-break: keep-all;
+        overflow-wrap: break-word;
+    }
+
+
+    /* Record Information */
+
+    .record-information {
+        gap: 20px;
+        padding: 25px 10px;
+        flex-wrap: wrap;
+    }
+
+    .record-information div {
+        min-width: 70px;
+    }
+
+    .record-information strong {
+        font-size: 12px;
+    }
+
+
+    /* Navigation */
+
+    .record-navigation {
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .record-navigation a {
+        font-size: 11px;
+    }
+
+
+    /* About */
+
+    .about {
+        padding: 100px 20px;
+    }
+
+    .about h2 {
+        font-size: 24px;
+    }
+
+    .about p {
+        font-size: 13px;
+        line-height: 2;
+    }
+
+
+    /* Footer */
+
+    footer {
+        padding: 45px 20px;
+    }
+
 }
