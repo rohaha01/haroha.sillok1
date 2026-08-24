@@ -1746,8 +1746,8 @@ a:active {
 }
 
 .search-result-preview mark {
-    background: transparent;
+    background: #d8b84c;
+    color: #1a1814;
+    padding: 1px 3px;
     font-weight: 700;
-    text-decoration: underline;
-    text-underline-offset: 3px;
 }
