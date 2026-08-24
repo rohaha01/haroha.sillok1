@@ -161,14 +161,74 @@ async function searchRecords() {
                 ${item.title}
             </div>
 
-            <div class="search-result-description">
-                검색어가 포함된 기록입니다.
-            </div>
+const originalText =
+    document.body.innerText;
 
-        `;
+const lowerText =
+    originalText.toLowerCase();
+
+const position =
+    lowerText.indexOf(keyword);
 
 
-        results.appendChild(result);
+if (position !== -1) {
+
+    const previewLength = 100;
+
+    const start =
+        Math.max(
+            0,
+            position - previewLength
+        );
+
+    const end =
+        Math.min(
+            originalText.length,
+            position + keyword.length + previewLength
+        );
+
+    let preview =
+        originalText.substring(
+            start,
+            end
+        );
+
+
+    if (start > 0) {
+        preview = "…" + preview;
+    }
+
+    if (end < originalText.length) {
+        preview += "…";
+    }
+
+
+    const escapedKeyword =
+        keyword.replace(
+            /[.*+?^${}()|[\]\\]/g,
+            "\\$&"
+        );
+
+
+    const highlightRegex =
+        new RegExp(
+            escapedKeyword,
+            "gi"
+        );
+
+
+    preview =
+        preview.replace(
+            highlightRegex,
+            match => `<mark>${match}</mark>`
+        );
+
+
+    matches.push({
+
+        ...item,
+
+        preview: preview
 
     });
 
