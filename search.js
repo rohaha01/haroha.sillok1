@@ -233,3 +233,7 @@ if (position !== -1) {
     });
 
 }
+
+<div class="search-result-preview">
+    ${item.preview}
+</div>
