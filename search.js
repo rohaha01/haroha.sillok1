@@ -27,28 +27,20 @@ const searchData = [
 
 async function searchRecords() {
 
-    const input =
-        document.getElementById("searchInput");
+    const input = document.getElementById("searchInput");
+    const keyword = input.value.trim();
 
-    const keyword =
-        input.value.trim();
-
-
-    const results =
-        document.getElementById("searchResults");
-
+    const results = document.getElementById("searchResults");
 
     results.innerHTML = "";
 
 
     if (!keyword) {
-
         results.innerHTML = `
             <p class="search-message">
                 검색어를 입력하십시오.
             </p>
         `;
-
         return;
     }
 
@@ -67,30 +59,25 @@ async function searchRecords() {
 
         try {
 
-            const response =
-                await fetch(item.url);
+            const response = await fetch(item.url);
 
             if (!response.ok) {
                 continue;
             }
 
 
-            const html =
-                await response.text();
+            const html = await response.text();
 
+            const parser = new DOMParser();
 
-            const parser =
-                new DOMParser();
-
-            const doc =
-                parser.parseFromString(
-                    html,
-                    "text/html"
-                );
+            const doc = parser.parseFromString(
+                html,
+                "text/html"
+            );
 
 
             /*
-             * 검색할 필요가 없는 부분 제거
+             * 메뉴나 코드 같은 부분은 검색하지 않음
              */
 
             doc.querySelectorAll(
@@ -100,65 +87,106 @@ async function searchRecords() {
             });
 
 
-            const text =
-                doc.body.innerText;
+            const text = doc.body.innerText;
+
+            const lowerText = text.toLowerCase();
+            const lowerKeyword = keyword.toLowerCase();
 
 
             /*
-             * 문장 단위로 나누기
-             *
-             * 줄바꿈 또는 문장부호를 기준으로
-             * 검색어가 포함된 문장을 찾음
+             * 검색어 위치 찾기
              */
 
-            const sentences =
-                text.split(
-                    /(?<=[.!?。！？])\s+|\n+/
-                );
+            const position =
+                lowerText.indexOf(lowerKeyword);
 
 
-            /*
-             * 검색어가 포함된 문장 찾기
-             */
-
-            const foundSentence =
-                sentences.find(sentence =>
-                    sentence
-                        .toLowerCase()
-                        .includes(
-                            keyword.toLowerCase()
-                        )
-                );
-
-
-            if (!foundSentence) {
+            if (position === -1) {
                 continue;
             }
 
 
             /*
-             * 검색어 하이라이트
+             * 검색어가 포함된 부분만 가져오기
+             *
+             * 앞뒤 40자
+             */
+
+            const context = 40;
+
+
+            const start = Math.max(
+                0,
+                position - context
+            );
+
+
+            const end = Math.min(
+                text.length,
+                position + keyword.length + context
+            );
+
+
+            let preview = text.substring(
+                start,
+                end
+            );
+
+
+            /*
+             * 앞뒤가 잘렸다는 표시
+             */
+
+            if (start > 0) {
+                preview = "…" + preview;
+            }
+
+
+            if (end < text.length) {
+                preview += "…";
+            }
+
+
+            /*
+             * HTML 특수문자 처리
+             */
+
+            const escapedPreview =
+                preview
+                    .replace(/&/g, "&amp;")
+                    .replace(/</g, "&lt;")
+                    .replace(/>/g, "&gt;")
+                    .replace(/"/g, "&quot;")
+                    .replace(/'/g, "&#039;");
+
+
+            /*
+             * 검색어 강조
              */
 
             const escapedKeyword =
-                keyword.replace(
-                    /[.*+?^${}()|[\]\\]/g,
-                    "\\$&"
-                );
+                keyword
+                    .replace(/&/g, "&amp;")
+                    .replace(/</g, "&lt;")
+                    .replace(/>/g, "&gt;")
+                    .replace(/"/g, "&quot;")
+                    .replace(/'/g, "&#039;");
 
 
             const highlightRegex =
                 new RegExp(
-                    escapedKeyword,
+                    escapedKeyword.replace(
+                        /[.*+?^${}()|[\]\\]/g,
+                        "\\$&"
+                    ),
                     "gi"
                 );
 
 
-            const highlightedSentence =
-                foundSentence.replace(
+            const highlightedPreview =
+                escapedPreview.replace(
                     highlightRegex,
-                    match =>
-                        `<mark>${match}</mark>`
+                    match => `<mark>${match}</mark>`
                 );
 
 
@@ -167,10 +195,9 @@ async function searchRecords() {
                 ...item,
 
                 preview:
-                    highlightedSentence.trim()
+                    highlightedPreview
 
             });
-
 
         } catch (error) {
 
@@ -189,7 +216,7 @@ async function searchRecords() {
 
 
     /*
-     * 검색 결과 없음
+     * 결과 없음
      */
 
     if (matches.length === 0) {
@@ -205,7 +232,7 @@ async function searchRecords() {
 
 
     /*
-     * 검색 결과 개수
+     * 결과 개수
      */
 
     const count =
@@ -221,7 +248,7 @@ async function searchRecords() {
 
 
     /*
-     * 검색 결과 표시
+     * 결과 표시
      */
 
     matches.forEach(item => {
