@@ -1738,3 +1738,16 @@ a:active {
 
     padding: 50px 0;
 }
+
+.search-result-preview {
+    font-size: 14px;
+    line-height: 1.8;
+    opacity: 0.7;
+}
+
+.search-result-preview mark {
+    background: transparent;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
