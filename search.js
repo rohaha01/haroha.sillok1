@@ -27,15 +27,10 @@ const searchData = [
 
 async function searchRecords() {
 
-    const input =
-        document.getElementById("searchInput");
+    const input = document.getElementById("searchInput");
+    const keyword = input.value.trim();
 
-    const keyword =
-        input.value.trim().toLowerCase();
-
-    const results =
-        document.getElementById("searchResults");
-
+    const results = document.getElementById("searchResults");
 
     results.innerHTML = "";
 
@@ -66,50 +61,142 @@ async function searchRecords() {
 
         try {
 
-            const response =
-                await fetch(item.url);
+            const response = await fetch(item.url);
 
-            const html =
-                await response.text();
+            if (!response.ok) {
+                continue;
+            }
 
 
-            const parser =
-                new DOMParser();
+            const html = await response.text();
 
-            const document =
-                parser.parseFromString(
-                    html,
-                    "text/html"
+
+            const parser = new DOMParser();
+
+            const doc = parser.parseFromString(
+                html,
+                "text/html"
+            );
+
+
+            /*
+             * 검색에서 제외할 요소
+             */
+
+            doc.querySelectorAll(
+                "script, style, header, nav, footer"
+            ).forEach(element => {
+                element.remove();
+            });
+
+
+            const text = doc.body.innerText;
+
+            const lowerText = text.toLowerCase();
+
+            const lowerKeyword = keyword.toLowerCase();
+
+
+            /*
+             * 검색어가 처음 등장하는 위치
+             */
+
+            const position =
+                lowerText.indexOf(lowerKeyword);
+
+
+            if (position === -1) {
+                continue;
+            }
+
+
+            /*
+             * 검색어 주변의 내용만 가져오기
+             *
+             * 앞 100자
+             * 검색어
+             * 뒤 100자
+             */
+
+            const contextLength = 100;
+
+
+            let start =
+                Math.max(
+                    0,
+                    position - contextLength
+                );
+
+
+            let end =
+                Math.min(
+                    text.length,
+                    position +
+                    keyword.length +
+                    contextLength
+                );
+
+
+            let preview =
+                text.substring(start, end);
+
+
+            /*
+             * 앞뒤가 잘렸다면 ... 표시
+             */
+
+            if (start > 0) {
+                preview = "…" + preview;
+            }
+
+
+            if (end < text.length) {
+                preview += "…";
+            }
+
+
+            /*
+             * 검색어를 HTML에 넣기 전에
+             * 특수문자 처리
+             */
+
+            const escapedKeyword =
+                keyword.replace(
+                    /[.*+?^${}()|[\]\\]/g,
+                    "\\$&"
+                );
+
+
+            const regex =
+                new RegExp(
+                    escapedKeyword,
+                    "gi"
                 );
 
 
             /*
-             * 실제 본문만 검색하기 위해
-             * script / style / header / nav 등을 제외
+             * 검색어 강조
              */
 
-            document
-                .querySelectorAll(
-                    "script, style, header, nav"
-                )
-                .forEach(element => {
-                    element.remove();
-                });
+            preview =
+                preview.replace(
+                    regex,
+                    match => `<mark>${match}</mark>`
+                );
 
 
-            const text =
-                document.body.innerText
-                    .toLowerCase();
+            matches.push({
 
+                title: item.title,
 
-            if (text.includes(keyword)) {
+                date: item.date,
 
-                matches.push({
-                    ...item,
-                    content: text
-                });
+                url: item.url,
 
-            }
+                preview: preview
+
+            });
+
 
         } catch (error) {
 
@@ -127,6 +214,10 @@ async function searchRecords() {
     results.innerHTML = "";
 
 
+    /*
+     * 검색 결과가 없는 경우
+     */
+
     if (matches.length === 0) {
 
         results.innerHTML = `
@@ -139,13 +230,35 @@ async function searchRecords() {
     }
 
 
+    /*
+     * 검색 결과 개수
+     */
+
+    const count =
+        document.createElement("div");
+
+    count.className =
+        "search-count";
+
+    count.textContent =
+        `검색 결과 ${matches.length}건`;
+
+    results.appendChild(count);
+
+
+    /*
+     * 검색 결과 출력
+     */
+
     matches.forEach(item => {
 
         const result =
             document.createElement("a");
 
+
         result.className =
             "search-result";
+
 
         result.href =
             item.url;
@@ -161,79 +274,15 @@ async function searchRecords() {
                 ${item.title}
             </div>
 
-const originalText =
-    document.body.innerText;
+            <div class="search-result-preview">
+                ${item.preview}
+            </div>
 
-const lowerText =
-    originalText.toLowerCase();
-
-const position =
-    lowerText.indexOf(keyword);
+        `;
 
 
-if (position !== -1) {
-
-    const previewLength = 100;
-
-    const start =
-        Math.max(
-            0,
-            position - previewLength
-        );
-
-    const end =
-        Math.min(
-            originalText.length,
-            position + keyword.length + previewLength
-        );
-
-    let preview =
-        originalText.substring(
-            start,
-            end
-        );
-
-
-    if (start > 0) {
-        preview = "…" + preview;
-    }
-
-    if (end < originalText.length) {
-        preview += "…";
-    }
-
-
-    const escapedKeyword =
-        keyword.replace(
-            /[.*+?^${}()|[\]\\]/g,
-            "\\$&"
-        );
-
-
-    const highlightRegex =
-        new RegExp(
-            escapedKeyword,
-            "gi"
-        );
-
-
-    preview =
-        preview.replace(
-            highlightRegex,
-            match => `<mark>${match}</mark>`
-        );
-
-
-    matches.push({
-
-        ...item,
-
-        preview: preview
+        results.appendChild(result);
 
     });
 
 }
-
-<div class="search-result-preview">
-    ${item.preview}
-</div>
