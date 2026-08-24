@@ -27,10 +27,16 @@ const searchData = [
 
 async function searchRecords() {
 
-    const input = document.getElementById("searchInput");
-    const keyword = input.value.trim();
+    const input =
+        document.getElementById("searchInput");
 
-    const results = document.getElementById("searchResults");
+    const keyword =
+        input.value.trim();
+
+
+    const results =
+        document.getElementById("searchResults");
+
 
     results.innerHTML = "";
 
@@ -61,26 +67,30 @@ async function searchRecords() {
 
         try {
 
-            const response = await fetch(item.url);
+            const response =
+                await fetch(item.url);
 
             if (!response.ok) {
                 continue;
             }
 
 
-            const html = await response.text();
+            const html =
+                await response.text();
 
 
-            const parser = new DOMParser();
+            const parser =
+                new DOMParser();
 
-            const doc = parser.parseFromString(
-                html,
-                "text/html"
-            );
+            const doc =
+                parser.parseFromString(
+                    html,
+                    "text/html"
+                );
 
 
             /*
-             * 검색에서 제외할 요소
+             * 검색할 필요가 없는 부분 제거
              */
 
             doc.querySelectorAll(
@@ -90,74 +100,44 @@ async function searchRecords() {
             });
 
 
-            const text = doc.body.innerText;
-
-            const lowerText = text.toLowerCase();
-
-            const lowerKeyword = keyword.toLowerCase();
+            const text =
+                doc.body.innerText;
 
 
             /*
-             * 검색어가 처음 등장하는 위치
+             * 문장 단위로 나누기
+             *
+             * 줄바꿈 또는 문장부호를 기준으로
+             * 검색어가 포함된 문장을 찾음
              */
 
-            const position =
-                lowerText.indexOf(lowerKeyword);
+            const sentences =
+                text.split(
+                    /(?<=[.!?。！？])\s+|\n+/
+                );
 
 
-            if (position === -1) {
+            /*
+             * 검색어가 포함된 문장 찾기
+             */
+
+            const foundSentence =
+                sentences.find(sentence =>
+                    sentence
+                        .toLowerCase()
+                        .includes(
+                            keyword.toLowerCase()
+                        )
+                );
+
+
+            if (!foundSentence) {
                 continue;
             }
 
 
             /*
-             * 검색어 주변의 내용만 가져오기
-             *
-             * 앞 100자
-             * 검색어
-             * 뒤 100자
-             */
-
-            const contextLength = 100;
-
-
-            let start =
-                Math.max(
-                    0,
-                    position - contextLength
-                );
-
-
-            let end =
-                Math.min(
-                    text.length,
-                    position +
-                    keyword.length +
-                    contextLength
-                );
-
-
-            let preview =
-                text.substring(start, end);
-
-
-            /*
-             * 앞뒤가 잘렸다면 ... 표시
-             */
-
-            if (start > 0) {
-                preview = "…" + preview;
-            }
-
-
-            if (end < text.length) {
-                preview += "…";
-            }
-
-
-            /*
-             * 검색어를 HTML에 넣기 전에
-             * 특수문자 처리
+             * 검색어 하이라이트
              */
 
             const escapedKeyword =
@@ -167,33 +147,27 @@ async function searchRecords() {
                 );
 
 
-            const regex =
+            const highlightRegex =
                 new RegExp(
                     escapedKeyword,
                     "gi"
                 );
 
 
-            /*
-             * 검색어 강조
-             */
-
-            preview =
-                preview.replace(
-                    regex,
-                    match => `<mark>${match}</mark>`
+            const highlightedSentence =
+                foundSentence.replace(
+                    highlightRegex,
+                    match =>
+                        `<mark>${match}</mark>`
                 );
 
 
             matches.push({
 
-                title: item.title,
+                ...item,
 
-                date: item.date,
-
-                url: item.url,
-
-                preview: preview
+                preview:
+                    highlightedSentence.trim()
 
             });
 
@@ -215,7 +189,7 @@ async function searchRecords() {
 
 
     /*
-     * 검색 결과가 없는 경우
+     * 검색 결과 없음
      */
 
     if (matches.length === 0) {
@@ -247,7 +221,7 @@ async function searchRecords() {
 
 
     /*
-     * 검색 결과 출력
+     * 검색 결과 표시
      */
 
     matches.forEach(item => {
