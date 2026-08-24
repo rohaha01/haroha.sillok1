@@ -1757,3 +1757,8 @@ a:active {
     padding: 1px 3px;
     font-weight: 700;
 }
+
+.record-nav-disabled {
+    opacity: 0.3;
+    cursor: default;
+}
