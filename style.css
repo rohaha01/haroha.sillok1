@@ -1746,8 +1746,14 @@ a:active {
 }
 
 .search-result-preview mark {
-    background: #d8b84c;
-    color: #1a1814;
+    background: linear-gradient(
+        transparent 20%,
+        rgba(218, 188, 73, 0.65) 20%,
+        rgba(218, 188, 73, 0.65) 85%,
+        transparent 85%
+    );
+
+    color: inherit;
     padding: 1px 3px;
     font-weight: 700;
 }
