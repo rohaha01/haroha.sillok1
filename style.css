@@ -1810,3 +1810,295 @@ a:active {
 
     color: #6b5b3e;
 }
+
+/* =========================
+   보관 기록
+========================= */
+
+.bookmark-index {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px 20px 80px;
+}
+
+
+.bookmark-count {
+    margin-bottom: 20px;
+
+    font-size: 13px;
+
+    color: #777;
+
+    letter-spacing: 0.08em;
+}
+
+
+
+/* 기록 하나 */
+
+.bookmark-record {
+    position: relative;
+
+    margin-bottom: 14px;
+
+    border-top: 1px solid #ddd7ce;
+
+    border-bottom: 1px solid #ddd7ce;
+
+    background: #fff;
+
+    transition:
+        background 0.2s ease;
+}
+
+
+.bookmark-record:hover {
+    background: #faf8f3;
+}
+
+
+
+/* 기록 링크 */
+
+.bookmark-record-link {
+    display: flex;
+
+    align-items: center;
+
+    min-height: 100px;
+
+    padding: 22px 70px 22px 25px;
+
+    color: inherit;
+
+    text-decoration: none;
+}
+
+
+
+/* 기록 번호 */
+
+.bookmark-record-mark {
+    width: 90px;
+
+    flex-shrink: 0;
+
+    color: #888;
+
+    font-size: 12px;
+
+    letter-spacing: 0.08em;
+}
+
+
+.bookmark-record-mark strong {
+    display: block;
+
+    margin-top: 5px;
+
+    color: #333;
+
+    font-size: 18px;
+
+    font-weight: 500;
+}
+
+
+
+/* 기록 내용 */
+
+.bookmark-record-content {
+    flex: 1;
+}
+
+
+.bookmark-record-date {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #999;
+
+    font-size: 12px;
+
+    letter-spacing: 0.04em;
+}
+
+
+.bookmark-record-content h3 {
+    margin: 0;
+
+    color: #333;
+
+    font-size: 18px;
+
+    font-weight: 500;
+
+    line-height: 1.5;
+}
+
+
+
+/* 화살표 */
+
+.bookmark-record-arrow {
+    position: absolute;
+
+    right: 25px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: #999;
+
+    font-size: 20px;
+
+    transition:
+        transform 0.2s ease,
+        color 0.2s ease;
+}
+
+
+.bookmark-record:hover
+.bookmark-record-arrow {
+    color: #555;
+
+    transform:
+        translate(5px, -50%);
+}
+
+
+
+/* 보관 해제 */
+
+.bookmark-remove {
+    position: absolute;
+
+    right: 22px;
+
+    bottom: 10px;
+
+    padding: 3px 7px;
+
+    border: none;
+
+    background: transparent;
+
+    color: #aaa;
+
+    font-family: inherit;
+
+    font-size: 11px;
+
+    cursor: pointer;
+}
+
+
+.bookmark-remove:hover {
+    color: #777;
+
+    text-decoration: underline;
+}
+
+
+
+/* 보관 기록이 없을 때 */
+
+.bookmark-empty-box {
+    padding: 70px 20px;
+
+    border-top: 1px solid #ddd7ce;
+
+    border-bottom: 1px solid #ddd7ce;
+
+    text-align: center;
+}
+
+
+.bookmark-empty-symbol {
+    margin-bottom: 15px;
+
+    color: #aaa;
+
+    font-size: 36px;
+}
+
+
+.bookmark-empty-box h3 {
+    margin: 0 0 10px;
+
+    color: #555;
+
+    font-size: 18px;
+
+    font-weight: 500;
+}
+
+
+.bookmark-empty-box p {
+    margin: 0 0 25px;
+
+    color: #999;
+
+    font-size: 13px;
+
+    line-height: 1.8;
+}
+
+
+.bookmark-empty-link {
+    display: inline-block;
+
+    padding: 9px 16px;
+
+    border: 1px solid #d8d2c8;
+
+    color: #666;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    transition:
+        background 0.2s ease;
+}
+
+
+.bookmark-empty-link:hover {
+    background: #f5f1e8;
+}
+
+
+
+/* 작은 화면 */
+
+@media (max-width: 600px) {
+
+    .bookmark-index {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+
+    .bookmark-record-link {
+        padding: 18px 45px 35px 18px;
+    }
+
+
+    .bookmark-record-mark {
+        width: 65px;
+    }
+
+
+    .bookmark-record-content h3 {
+        font-size: 15px;
+    }
+
+
+    .bookmark-remove {
+        right: 18px;
+        bottom: 8px;
+    }
+
+}
