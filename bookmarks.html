@@ -1,3 +1,432 @@
-<a href="bookmarks.html">
-    보관 기록
-</a>
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>保存記錄 | 差使日誌</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="bookmark.js" defer></script>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         상단 메뉴
+    ========================== -->
+
+    <header>
+
+        <a href="index.html" class="logo">
+            差使日誌
+        </a>
+
+
+        <nav>
+
+            <a href="records.html">
+                기록
+            </a>
+
+            <a href="resources.html">
+                자료실
+            </a>
+
+            <a href="about.html">
+                소개
+            </a>
+
+            <a href="search.html">
+                검색
+            </a>
+
+            <a href="bookmarks.html">
+                보관 기록
+            </a>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- =========================
+         메인
+    ========================== -->
+
+    <main>
+
+
+        <!-- 제목 -->
+
+        <section class="hero">
+
+            <div class="hero-mark">
+                保存記錄
+            </div>
+
+
+            <h1>
+                보관 기록
+            </h1>
+
+
+            <div class="line"></div>
+
+
+            <p class="hero-subtitle">
+                保存された記錄
+            </p>
+
+
+            <p class="hero-description">
+                따로 보관해 둔 하로하의 기록들을<br>
+                한곳에서 확인합니다.
+            </p>
+
+        </section>
+
+
+
+        <!-- =========================
+             보관 기록 목록
+        ========================== -->
+
+        <section class="bookmark-index">
+
+
+            <div class="section-heading">
+
+                <span>
+                    BOOKMARKS
+                </span>
+
+
+                <h2>
+                    내가 보관한 기록
+                </h2>
+
+            </div>
+
+
+            <!-- 여기에 JavaScript가 기록을 넣음 -->
+
+            <div id="bookmarkList">
+
+                <p class="bookmark-empty">
+                    보관한 기록을 불러오는 중...
+                </p>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =========================
+             안내
+        ========================== -->
+
+        <section class="about">
+
+            <div class="about-symbol">
+                ㅡ
+            </div>
+
+
+            <h2>
+                기록 보관에 대하여
+            </h2>
+
+
+            <p>
+                관심 있는 기록을 보관하면<br>
+                이곳에서 다시 확인할 수 있습니다.
+            </p>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =========================
+         하단
+    ========================== -->
+
+    <footer>
+
+        <div>
+            差使日誌
+        </div>
+
+
+        <p>
+            A personal archive for HAROHA
+        </p>
+
+
+        <small>
+            2026
+        </small>
+
+    </footer>
+
+
+
+    <!-- =========================
+         보관 기록 표시
+    ========================== -->
+
+    <script>
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
+
+                const list =
+                    document.getElementById(
+                        "bookmarkList"
+                    );
+
+
+                const saved =
+                    localStorage.getItem(
+                        "harohaBookmarks"
+                    );
+
+
+                let bookmarks = [];
+
+
+                if (saved) {
+
+                    try {
+
+                        bookmarks =
+                            JSON.parse(saved);
+
+                    } catch (error) {
+
+                        console.error(
+                            "보관 기록을 불러오지 못했습니다.",
+                            error
+                        );
+
+                    }
+
+                }
+
+
+                /*
+                 * 보관 기록이 없을 경우
+                 */
+
+                if (bookmarks.length === 0) {
+
+                    list.innerHTML = `
+
+                        <div class="bookmark-empty-box">
+
+                            <div class="bookmark-empty-symbol">
+                                ☆
+                            </div>
+
+                            <h3>
+                                보관한 기록이 없습니다.
+                            </h3>
+
+                            <p>
+                                기록을 읽다가 마음에 드는 기록을<br>
+                                「이 기록 보관」으로 저장해 보십시오.
+                            </p>
+
+                            <a
+                                href="records.html"
+                                class="bookmark-empty-link"
+                            >
+                                기록 보러가기 →
+                            </a>
+
+                        </div>
+
+                    `;
+
+                    return;
+
+                }
+
+
+                /*
+                 * 결과 개수
+                 */
+
+                const count =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                count.className =
+                    "bookmark-count";
+
+
+                count.textContent =
+                    `보관 기록 ${bookmarks.length}건`;
+
+
+                list.appendChild(count);
+
+
+
+                /*
+                 * 기록 표시
+                 */
+
+                bookmarks.forEach(
+                    function (item) {
+
+                        const record =
+                            document.createElement(
+                                "div"
+                            );
+
+
+                        record.className =
+                            "bookmark-record";
+
+
+                        record.innerHTML = `
+
+                            <a
+                                href="${item.url}"
+                                class="bookmark-record-link"
+                            >
+
+                                <div class="bookmark-record-mark">
+                                    記錄
+                                    <strong>
+                                        ${item.id}
+                                    </strong>
+                                </div>
+
+
+                                <div class="bookmark-record-content">
+
+                                    <span class="bookmark-record-date">
+                                        ${item.date}
+                                    </span>
+
+
+                                    <h3>
+                                        ${item.title}
+                                    </h3>
+
+                                </div>
+
+
+                                <div class="bookmark-record-arrow">
+                                    →
+                                </div>
+
+                            </a>
+
+
+                            <button
+                                type="button"
+                                class="bookmark-remove"
+                                data-id="${item.id}"
+                            >
+                                보관 해제
+                            </button>
+
+                        `;
+
+
+                        list.appendChild(
+                            record
+                        );
+
+                    }
+                );
+
+
+
+                /*
+                 * 보관 해제
+                 */
+
+                document
+                    .querySelectorAll(
+                        ".bookmark-remove"
+                    )
+                    .forEach(
+                        function (button) {
+
+                            button.addEventListener(
+                                "click",
+                                function () {
+
+                                    const id =
+                                        this.dataset.id;
+
+
+                                    const saved =
+                                        localStorage.getItem(
+                                            "harohaBookmarks"
+                                        );
+
+
+                                    if (!saved) {
+                                        return;
+                                    }
+
+
+                                    let bookmarks =
+                                        JSON.parse(saved);
+
+
+                                    bookmarks =
+                                        bookmarks.filter(
+                                            function (item) {
+                                                return item.id !== id;
+                                            }
+                                        );
+
+
+                                    localStorage.setItem(
+                                        "harohaBookmarks",
+                                        JSON.stringify(
+                                            bookmarks
+                                        )
+                                    );
+
+
+                                    location.reload();
+
+                                }
+                            );
+
+                        }
+                    );
+
+            }
+        );
+
+    </script>
+
+
+</body>
+
+</html>
