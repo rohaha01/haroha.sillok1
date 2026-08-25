@@ -1762,3 +1762,51 @@ a:active {
     opacity: 0.3;
     cursor: default;
 }
+
+.record-bookmark {
+    margin: 30px 0;
+    text-align: center;
+}
+
+
+.bookmark-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 10px 18px;
+
+    background: transparent;
+
+    border: 1px solid #d8d2c8;
+
+    color: #555;
+
+    font-family: inherit;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+
+.bookmark-button:hover {
+    background: #f5f1e8;
+}
+
+
+.bookmark-icon {
+    font-size: 18px;
+}
+
+
+.bookmark-button.bookmarked {
+    background: #f5f1e8;
+
+    border-color: #b9aa8d;
+
+    color: #6b5b3e;
+}
