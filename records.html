@@ -12,8 +12,14 @@
 
     <link rel="stylesheet" href="style.css">
 
+    <!-- 기록 데이터 -->
     <script src="records.js" defer></script>
+
+    <!-- 기록 표시 -->
     <script src="record.js" defer></script>
+
+    <!-- 북마크 -->
+    <script src="bookmark.js" defer></script>
 
 </head>
 
@@ -21,69 +27,96 @@
 <body>
 
 
-<header>
+    <!-- =========================
+         상단 메뉴
+    ========================== -->
 
-    <a href="index.html" class="logo">
-        差使日誌
-    </a>
+    <header>
 
-
-    <nav>
-
-        <a href="records.html">
-            기록
+        <a href="index.html" class="logo">
+            差使日誌
         </a>
 
-        <a href="resources.html">
-            자료실
-        </a>
 
-        <a href="about.html">
-            소개
-        </a>
+        <nav>
 
-        <a href="search.html">
-            검색
-        </a>
-
-        <a href="bookmarks.html">
-            보관 기록
-        </a>
-
-    </nav>
-
-</header>
+            <a href="records.html">
+                기록
+            </a>
 
 
+            <a href="resources.html">
+                자료실
+            </a>
 
-<main>
 
-    <section class="record-detail">
+            <a href="about.html">
+                소개
+            </a>
 
-        <div id="recordContent">
+
+            <a href="search.html">
+                검색
+            </a>
+
+
+            <a href="bookmarks.html">
+                보관 기록
+            </a>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- =========================
+         메인
+    ========================== -->
+
+    <main>
+
+
+        <section class="record-detail">
+
+
+            <!--
+                record.js가
+                이 안에 기록을 자동으로 넣음
+            -->
+
+            <div id="recordContent">
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =========================
+         하단
+    ========================== -->
+
+    <footer>
+
+        <div>
+            差使日誌
         </div>
 
-    </section>
 
-</main>
+        <p>
+            A personal archive for HAROHA
+        </p>
 
 
+        <small>
+            2026
+        </small>
 
-<footer>
-
-    <div>
-        差使日誌
-    </div>
-
-    <p>
-        A personal archive for HAROHA
-    </p>
-
-    <small>
-        2026
-    </small>
-
-</footer>
+    </footer>
 
 
 </body>
