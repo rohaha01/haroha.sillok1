@@ -12,6 +12,8 @@
 
     <link rel="stylesheet" href="style.css">
 
+    <script src="bookmark.js" defer></script>
+
 </head>
 
 
@@ -193,25 +195,53 @@
 
 
 
+            <!-- 북마크 -->
+
+            <div class="record-bookmark">
+
+                <button
+                    type="button"
+                    class="bookmark-button"
+                    onclick="toggleBookmark(
+                        '0002',
+                        '데뷔 다음 날, 육신을 자세히 보여주고 대화하다',
+                        '2025.09.27',
+                        'records-0002.html'
+                    )">
+
+                    <span class="bookmark-icon">
+                        ☆
+                    </span>
+
+                    <span class="bookmark-text">
+                        이 기록 보관
+                    </span>
+
+                </button>
+
+            </div>
+
+
+
             <!-- 이동 -->
 
             <div class="record-navigation">
 
-    <a href="records-0001.html">
-        ← 이전 기록
-    </a>
+                <a href="records-0001.html">
+                    ← 이전 기록
+                </a>
 
 
-    <a href="records.html">
-        기록 목록
-    </a>
+                <a href="records.html">
+                    기록 목록
+                </a>
 
 
-    <a href="records-0003.html">
-        다음 기록 →
-    </a>
+                <a href="records-0003.html">
+                    다음 기록 →
+                </a>
 
-</div>
+            </div>
 
 
         </section>
