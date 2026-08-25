@@ -6,26 +6,29 @@ const params = new URLSearchParams(
     window.location.search
 );
 
-const recordId = params.get("id");
+const id = params.get("id");
+
+const record =
+    records.find(
+        item => item.id === id
+    );
 
 
 // 기록을 표시할 영역
-const recordContent =
+const container =
     document.getElementById("recordContent");
 
 
-// 기록 찾기
-const record =
-    records.find(item => item.id === recordId);
-
-
 // ========================================
-// 기록이 존재하지 않는 경우
+// 기록을 찾지 못한 경우
 // ========================================
 
 if (!record) {
 
-    recordContent.innerHTML = `
+    document.title =
+        "記錄 없음 | 差使日誌";
+
+    container.innerHTML = `
 
         <div class="record-not-found">
 
@@ -38,8 +41,7 @@ if (!record) {
             </h1>
 
             <p>
-                요청한 기록이 존재하지 않거나
-                잘못된 기록 번호입니다.
+                요청한 기록이 존재하지 않습니다.
             </p>
 
             <a href="records.html">
@@ -59,61 +61,60 @@ if (!record) {
 
 else {
 
-    // 현재 기록의 위치
-    const currentIndex =
-        records.findIndex(
-            item => item.id === recordId
-        );
+    // 브라우저 제목
+    document.title =
+        `記錄 第${record.id}號 | 差使日誌`;
 
 
+    // 현재 기록 위치
+    const index =
+        records.indexOf(record);
+
+
+    // ====================================
     // 이전 기록
-    const previousRecord =
-        records[currentIndex - 1];
+    // ====================================
+
+    let previous = "";
 
 
+    if (index > 0) {
+
+        previous = `
+
+            <a href="record.html?id=${records[index - 1].id}">
+                ← 이전 기록
+            </a>
+
+        `;
+
+    }
+
+    else {
+
+        previous = `
+
+            <span class="record-nav-disabled">
+                ← 이전 기록
+            </span>
+
+        `;
+
+    }
+
+
+    // ====================================
     // 다음 기록
-    const nextRecord =
-        records[currentIndex + 1];
+    // ====================================
+
+    let next = "";
 
 
-    // 이전 기록 버튼
-    let previousButton;
+    if (index < records.length - 1) {
 
+        next = `
 
-    if (previousRecord) {
-
-        previousButton = `
-
-            <a href="record.html?id=${previousRecord.id}">
-                ← 이전 기록
-            </a>
-
-        `;
-
-    }
-
-    else {
-
-        previousButton = `
-
-            <span class="record-nav-disabled">
-                ← 이전 기록
-            </span>
-
-        `;
-
-    }
-
-
-    // 다음 기록 버튼
-    let nextButton;
-
-
-    if (nextRecord) {
-
-        nextButton = `
-
-            <a href="record.html?id=${nextRecord.id}">
+            <a href="record.html?id=${records[index + 1].id}">
                 다음 기록 →
             </a>
 
@@ -123,7 +124,7 @@ else {
 
     else {
 
-        nextButton = `
+        next = `
 
             <span class="record-nav-disabled">
                 다음 기록 →
@@ -134,11 +135,11 @@ else {
     }
 
 
-    // ========================================
-    // 화면에 기록 출력
-    // ========================================
+    // ====================================
+    // 기록 출력
+    // ====================================
 
-    recordContent.innerHTML = `
+    container.innerHTML = `
 
         <div class="record-detail-mark">
             HAROHA RECORD
@@ -232,15 +233,13 @@ else {
 
         <div class="record-navigation">
 
-            ${previousButton}
-
+            ${previous}
 
             <a href="records.html">
                 기록 목록
             </a>
 
-
-            ${nextButton}
+            ${next}
 
         </div>
 
