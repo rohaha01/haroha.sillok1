@@ -1,199 +1,156 @@
-const params = new URLSearchParams(
-    window.location.search
-);
+const records = [
 
-const number = params.get("id");
+    {
+        id: "0001",
 
-const container =
-    document.getElementById("recordContent");
+        date: "2025.09.26",
+
+        dateKorean: "二千二十五年 九月 二十六日",
+
+        title: "저승차사 하로하, 등장",
+
+        category: "活動",
+
+        content: `
+            <p>
+                2025년 9월 26일.
+            </p>
+
+            <p>
+                병오년 하로하가 블루점프 3기 저승차사 데뷔하였다.
+                사이나 링고의 「丸ノ内サディスティック」를 불렀다.
+                후에 모습을 비춰 보이며 발부터 보여주며
+                "아까 제가 지나가다가 봤는데, 누가 저보고 할아버지 양말이라고"라 말하였다.
+                그러면 말을 덧붙이길
+                "여러분 가장 패셔니스타는 양말 색깔을 맞추는 거란걸 모르시나요?
+                이 포인트 이 시그니처 색깔을 담은 것"이라 하였다.
+                검을 뺄 수 있냐는 망령의 말에 칼을 빼들고 휘두르다가
+                "여러분 까불면 반갈죽이 됩니다"라 말했다.
+            </p>
+
+            <p>
+                노래 태연의 사계를 부르고 스스로 말하길
+                "근데 저도 좀 느끼긴 한데, 노래 부를때 가만히 얼굴을 보고 있으면
+                확실히 예뻐 보이긴 하고요"라 평하며
+                그러지 않을 때와의 모습의 차이에 대해 의문을 드러냈다.
+            </p>
+
+            <p>
+                PPT로 자신 소개를 하였다.
+            </p>
+
+            <p>
+                별풍선 300개를 망령들이 계속 보내자
+                하로하의 방에 망령들이 여럿이 돌아다니는 기능을 보였다.
+                하로하 데뷔 기념 MD 기간 한정 판매 굿즈를 홍보하였다.
+            </p>
+        `
+    },
 
 
-const index =
-    records.findIndex(
-        record => record.number === number
-    );
+    {
+        id: "0002",
+
+        date: "2025.09.27",
+
+        dateKorean: "二千二十五年 九月 二十七日",
+
+        title: "데뷔 다음 날, 육신을 자세히 보여주고 대화하다",
+
+        category: "活動",
+
+        content: `
+            <p>
+                2025년 9월 27일.
+            </p>
+
+            <p>
+                데뷔 다음 날, 여러 기능과 함께 육신 및 의상의 세부적인 모습을 보여주었다.
+                시청자 중 자신을 로하 언니라 말하는 자를 보더니 홀로 되뇌다가
+                얇게 숨을 내쉬고 다시 방송을 이어갔다.
+            </p>
+
+            <p>
+                또한 의상을 보여주며
+                "패션 트렌드에 민감하여 요즘 크롭이 유행이니 따라하지 않을 수 없었다"라 말하였다.
+                이어 받은 재킷을 직접 잘라버렸다고 밝혔다.
+            </p>
+
+            <p>
+                망령 중 하나가
+                "언니 근데... 좀... 키웠네...?"라 묻자
+                이내 원래 이 정도는 되었다고 답하였다.
+            </p>
+
+            <p>
+                애니메이션을 넣을 때부터 넣고 싶었던 것이 있다며
+                유리 창에 입김을 불어 소매로 닦는 것을 보여주었다.
+                이게 구현이 될까요라고 묻자 해보겠다고 하였으며,
+                실제로 이를 구현해 주었다고 한다.
+            </p>
+
+            <p>
+                카페를 보던 중 하로하가 말하길,
+                전에 데뷔 후기 이벤트의 10분을 뽑겠다고 하였는데
+                이를 대월향에게 만약 11분이 작성하면 어떡하느냐고 아뢰자,
+                사비를 들라는 답을 들었다고 말했다.
+            </p>
+
+            <p>
+                제미나이가 데뷔 방송에 필요한 손 그림을 잘 그려주었다고 하였다.
+                또한 제미나이가 이미지를 잘 만들어준다고 평하였다.
+            </p>
+        `
+    },
 
 
-/*
- * 존재하지 않는 기록
- */
+    {
+        id: "0003",
 
-if (index === -1) {
+        date: "2025.09.28",
 
-    container.innerHTML = `
+        dateKorean: "二千二十五年 九月 二十八日",
 
-        <p class="search-message">
-            기록을 찾을 수 없습니다.
-        </p>
+        title: "보컬 전공을 밝히고 학창 시절을 회고하다",
 
-    `;
+        category: "活動",
 
-} else {
+        content: `
+            <p>
+                2025년 9월 28일.
+            </p>
 
-    const record =
-        records[index];
+            <p>
+                등장하여 마이크 소리가 전날보다 큰지 확인하였다.
+            </p>
 
+            <p>
+                스스로 밝히길 보컬을 전공하였으며,
+                "놀랍게도 대졸이에요"라 하였다.
+                그동안 이를 밝히지 않았던 이유에 대하여 말하였다.
+            </p>
 
-    /*
-     * 이전 기록
-     */
+            <p>
+                학교에 처음 갔을 당시의 모습을 두고 동물의 왕국 같았다고 회고하였다.
+            </p>
 
-    let previous = "";
+            <p>
+                이어 3월에 입학하여 5월에 신입생 공연을 하였으며,
+                공연을 위해 연습과 합주를 많이 하다 보니
+                "어찌 정분이 나지 않을 수 있겠는가?"라고 하였다.
+            </p>
 
-    if (index > 0) {
+            <p>
+                발표 수업에서는 1주차부터 15주차까지 전 학년이 한 곡씩 공연한다고 하였다.
+            </p>
 
-        previous = `
-            <a href="record.html?id=${records[index - 1].number}">
-                ← 이전 기록
-            </a>
-        `;
-
-    } else {
-
-        previous = `
-            <span class="record-nav-disabled">
-                ← 이전 기록
-            </span>
-        `;
-
+            <p>
+                그리고 이러한 상황을 실제로 겪은 사람이 자신이었다고 밝혔다.
+                1학년 전 학기에는 1주차,
+                2학년 1학기에는 1주차,
+                2학년 2학기에는 2주차에 공연하였다고 말하였다.
+            </p>
+        `
     }
 
-
-    /*
-     * 다음 기록
-     */
-
-    let next = "";
-
-    if (index < records.length - 1) {
-
-        next = `
-            <a href="record.html?id=${records[index + 1].number}">
-                다음 기록 →
-            </a>
-        `;
-
-    } else {
-
-        next = `
-            <span class="record-nav-disabled">
-                다음 기록 →
-            </span>
-        `;
-
-    }
-
-
-    /*
-     * 화면 출력
-     */
-
-    container.innerHTML = `
-
-        <div class="record-detail-mark">
-            HAROHA RECORD
-        </div>
-
-
-        <p class="record-detail-number">
-            記錄 第${record.number}號
-        </p>
-
-
-        <h1>
-            ${record.title}
-        </h1>
-
-
-        <div class="record-detail-line"></div>
-
-
-        <p class="record-detail-date">
-            ${record.dateKorean}
-        </p>
-
-
-        <article class="record-document">
-
-
-            <div class="document-heading">
-
-                <span>
-                    ${record.category}記錄
-                </span>
-
-                <span>
-                    ${record.date}
-                </span>
-
-            </div>
-
-
-            ${record.content}
-
-
-        </article>
-
-
-        <section class="record-information">
-
-
-            <div>
-
-                <span>
-                    記錄番號
-                </span>
-
-                <strong>
-                    ${record.number}
-                </strong>
-
-            </div>
-
-
-            <div>
-
-                <span>
-                    年月日
-                </span>
-
-                <strong>
-                    ${record.date}
-                </strong>
-
-            </div>
-
-
-            <div>
-
-                <span>
-                    分類
-                </span>
-
-                <strong>
-                    ${record.category}
-                </strong>
-
-            </div>
-
-
-        </section>
-
-
-        <div class="record-navigation">
-
-            ${previous}
-
-
-            <a href="records.html">
-                기록 목록
-            </a>
-
-
-            ${next}
-
-        </div>
-
-    `;
-
-}
+];
