@@ -12,6 +12,12 @@ const searchData = [
 },
 
     {
+    title: "記錄 第0003號",
+    date: "2025.09.28",
+    url: "records-0003.html"
+},
+
+    {
         title: "2026年 06月",
         date: "2026.06",
         url: "records-2026-06.html"
